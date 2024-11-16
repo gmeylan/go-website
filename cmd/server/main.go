@@ -2,7 +2,9 @@ package main
 
 import (
 	"log"
+	"log/slog"
 	"net/http"
+	"os"
 	"path/filepath"
 
 	"github.com/gmeylan/go-website/internal/database"
@@ -10,6 +12,7 @@ import (
 )
 
 func main() {
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	dbPath := filepath.Join(".", "test.db")
 	db, err := database.NewSQLiteDB(dbPath)
 	if err != nil {
@@ -17,20 +20,24 @@ func main() {
 	}
 	defer db.Close()
 
-	log.Printf("Successfully connected to database at %s", dbPath)
+	logger.Info("Successfully connected to database")
 
-	mux := http.NewServeMux()
+	router := http.NewServeMux()
 
 	h := handlers.NewHandlers(db)
 
-	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+	router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 		h.Home(w, r)
 	})
 
-	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
-	log.Println("Server starting on :8080")
-	err = http.ListenAndServe(":8080", mux)
-	if err != nil {
-		log.Fatalf("Server failed to start: %v", err)
+	router.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
+
+	srv := http.Server{
+		Addr:    ":8080",
+		Handler: router,
 	}
+
+	logger.Info("Server listening on :8080")
+
+	srv.ListenAndServe()
 }
