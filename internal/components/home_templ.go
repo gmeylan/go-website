@@ -217,7 +217,7 @@ func renderExperience(title string, company string, period string, description s
 	})
 }
 
-func AdditionalTechnologies() templ.Component {
+func renderFeaturedPost() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -236,6 +236,93 @@ func AdditionalTechnologies() templ.Component {
 		templ_7745c5c3_Var14 := templ.GetChildren(ctx)
 		if templ_7745c5c3_Var14 == nil {
 			templ_7745c5c3_Var14 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<article class=\"bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"aspect-w-16 aspect-h-9\"><img src=\"https://placehold.co/800x400/png\" alt=\"Article image\" class=\"object-cover w-full h-full\"></div><div class=\"p-6\"><div class=\"flex gap-2 mb-4\"><span class=\"px-3 py-1 text-sm font-medium text-indigo-600 bg-indigo-100 rounded-md\">Go</span> <span class=\"px-3 py-1 text-sm font-medium text-indigo-600 bg-indigo-100 rounded-md\">Web</span></div><h3 class=\"text-xl font-bold text-gray-900 mb-2\"><a href=\"/blog/slug-de-ouf\" class=\"hover:text-indigo-600\">Introduction à HTMX avec Go</a></h3><p class=\"text-gray-600 mb-4\">Découvrez comment HTMX peut simplifier le développement web moderne avec Go et créer des applications interactives sans JavaScript complexe.</p><div class=\"flex items-center justify-between\"><div class=\"flex items-center\"><div class=\"ml-3\"><p class=\"text-sm font-medium text-gray-900\">John Doe</p><p class=\"text-sm text-gray-500\">15 Mars 2024</p></div></div></div></div></article>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func renderPostCard() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var15 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var15 == nil {
+			templ_7745c5c3_Var15 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<article class=\"bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"aspect-w-16 aspect-h-9\"><img src=\"https://placehold.co/400x225/png\" alt=\"Article image\" class=\"object-cover w-full h-full\"></div><div class=\"p-6\"><div class=\"flex gap-2 mb-3\"><span class=\"px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-100 rounded-md\">Docker</span></div><h3 class=\"text-lg font-bold text-gray-900 mb-2\"><a href=\"#\" class=\"hover:text-indigo-600\">Optimiser ses builds Docker</a></h3><p class=\"text-gray-600 text-sm mb-4\">Apprenez les meilleures pratiques pour optimiser vos builds Docker et améliorer vos workflows de développement.</p><div class=\"flex items-center justify-between text-sm\"><div class=\"flex items-center\"><span class=\"ml-2 text-gray-700\">Jane Smith</span></div><span class=\"text-gray-500\">12 Mars 2024</span></div></div></article>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func renderRelatedPost() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var16 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var16 == nil {
+			templ_7745c5c3_Var16 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<article class=\"bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"p-6\"><span class=\"px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-100 rounded-md\">Go</span><h3 class=\"mt-3 text-lg font-bold text-gray-900\"><a href=\"#\" class=\"hover:text-indigo-600\">Performance des applications Go</a></h3><p class=\"mt-2 text-sm text-gray-600\">Techniques et bonnes pratiques pour optimiser vos applications Go en production.</p><div class=\"mt-4 flex items-center justify-between text-sm\"><span class=\"text-gray-500\">10 Mars 2024</span> <span class=\"text-indigo-600 hover:text-indigo-500\">Lire l'article →</span></div></div></article>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func AdditionalTechnologies() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var17 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var17 == nil {
+			templ_7745c5c3_Var17 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4\">")
@@ -298,12 +385,12 @@ func About() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var15 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var15 == nil {
-			templ_7745c5c3_Var15 = templ.NopComponent
+		templ_7745c5c3_Var18 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var18 == nil {
+			templ_7745c5c3_Var18 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Var16 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Var19 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
 			if !templ_7745c5c3_IsBuffer {
@@ -343,7 +430,7 @@ func About() templ.Component {
 			}
 			return templ_7745c5c3_Err
 		})
-		templ_7745c5c3_Err = page("A propos").Render(templ.WithChildren(ctx, templ_7745c5c3_Var16), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = page("A propos").Render(templ.WithChildren(ctx, templ_7745c5c3_Var19), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -367,12 +454,12 @@ func Home() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var17 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var17 == nil {
-			templ_7745c5c3_Var17 = templ.NopComponent
+		templ_7745c5c3_Var20 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var20 == nil {
+			templ_7745c5c3_Var20 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Var18 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Var21 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
 			if !templ_7745c5c3_IsBuffer {
@@ -462,7 +549,153 @@ func Home() templ.Component {
 			}
 			return templ_7745c5c3_Err
 		})
-		templ_7745c5c3_Err = page("Home").Render(templ.WithChildren(ctx, templ_7745c5c3_Var18), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = page("Home").Render(templ.WithChildren(ctx, templ_7745c5c3_Var21), templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func Blog() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var22 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var22 == nil {
+			templ_7745c5c3_Var22 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Var23 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+			if !templ_7745c5c3_IsBuffer {
+				defer func() {
+					templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err == nil {
+						templ_7745c5c3_Err = templ_7745c5c3_BufErr
+					}
+				}()
+			}
+			ctx = templ.InitializeContext(ctx)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"space-y-16\"><section><div class=\"text-center\"><h1 class=\"text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl\">Blog</h1><p class=\"mt-3 max-w-2xl mx-auto text-xl text-gray-500\">Réflexions sur le développement web, DevOps et les bonnes pratiques</p></div></section><section class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"p-6 sm:p-8\"><div class=\"flex flex-wrap gap-3\"><button class=\"px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700\">Tous les articles</button> <button class=\"px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-50\">DevOps</button> <button class=\"px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-50\">Go</button> <button class=\"px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-50\">Web</button></div></div></section><section class=\"space-y-8\"><h2 class=\"text-2xl font-bold text-gray-900\">Articles récents</h2><div class=\"grid gap-8 md:grid-cols-2\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderFeaturedPost().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderFeaturedPost().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section><section class=\"space-y-8\"><h2 class=\"text-2xl font-bold text-gray-900\">Tous les articles</h2><div class=\"grid gap-8 sm:grid-cols-2 lg:grid-cols-3\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderPostCard().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderPostCard().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderPostCard().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderPostCard().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderPostCard().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderPostCard().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			return templ_7745c5c3_Err
+		})
+		templ_7745c5c3_Err = page("Blog index").Render(templ.WithChildren(ctx, templ_7745c5c3_Var23), templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func BlogPost(slug string) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var24 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var24 == nil {
+			templ_7745c5c3_Var24 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Var25 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+			if !templ_7745c5c3_IsBuffer {
+				defer func() {
+					templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err == nil {
+						templ_7745c5c3_Err = templ_7745c5c3_BufErr
+					}
+				}()
+			}
+			ctx = templ.InitializeContext(ctx)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"space-y-6\"><header class=\"mx-auto text-center space-y-2\"><h1 class=\"text-4xl font-extrabold text-gray-900 sm:text-5xl\">Introduction à HTMX avec Go</h1><div class=\"text-gray-500\"><time>15 Mars 2024</time></div><div class=\"flex items-center justify-center\"><div class=\"ml-3 text-left\"><p class=\"text-sm font-medium text-gray-900\">John Doe</p></div></div><div class=\"flex justify-center gap-2\"><span class=\"px-3 py-1 text-sm font-medium text-indigo-600 bg-indigo-100 rounded-md\">Go</span> <span class=\"px-3 py-1 text-sm font-medium text-indigo-600 bg-indigo-100 rounded-md\">Web</span></div></header><div class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"></div><div class=\"max-w-4xl mx-auto space-y-8\"><div class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"p-8\"><h2 class=\"text-lg font-bold text-gray-900 mb-4\">Table des matières</h2><nav class=\"space-y-2\"><a href=\"#introduction\" class=\"block text-indigo-600 hover:text-indigo-700\">Introduction</a> <a href=\"#pourquoi-htmx\" class=\"block text-gray-600 hover:text-indigo-600\">Pourquoi HTMX ?</a> <a href=\"#installation\" class=\"block text-gray-600 hover:text-indigo-600\">Installation et configuration</a> <a href=\"#exemple\" class=\"block text-gray-600 hover:text-indigo-600\">Un exemple concret</a> <a href=\"#conclusion\" class=\"block text-gray-600 hover:text-indigo-600\">Conclusion</a></nav></div></div><article class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"prose prose-indigo max-w-none p-8\"><h2 id=\"introduction\">Introduction</h2><p>HTMX est une bibliothèque qui permet d'accéder aux fonctionnalités AJAX, CSS Transitions,  WebSockets et Server Sent Events directement dans HTML, sans écrire de JavaScript. Combiné  avec Go, il offre une approche puissante et simple pour créer des applications web interactives.</p><h2 id=\"pourquoi-htmx\">Pourquoi HTMX ?</h2><p>L'approche traditionnelle du développement web moderne implique souvent la création d'une API  REST et d'une application front-end distincte. Bien que cette architecture ait ses avantages,  elle introduit une complexité significative pour de nombreux projets.</p><h2 id=\"installation\">Installation et configuration</h2><pre><code class=\"language-html\">&lt;script src=\"https://unpkg.com/htmx.org@1.9.10\"&gt;&lt;/script&gt;</code></pre><h2 id=\"exemple\">Un exemple concret</h2><div class=\"bg-gray-50 rounded-lg p-6 my-6\"><h3>Exemple de code</h3><pre><code class=\"language-go\"></code></pre></div><h2 id=\"conclusion\">Conclusion</h2><p>HTMX et Go forment un duo efficace pour le développement web moderne, offrant une alternative  élégante aux architectures plus complexes.</p></div></article><div class=\"space-y-6\"><h2 class=\"text-2xl font-bold text-gray-900\">Articles similaires</h2><div class=\"grid gap-6 sm:grid-cols-2\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderRelatedPost().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderRelatedPost().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></div></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			return templ_7745c5c3_Err
+		})
+		templ_7745c5c3_Err = page(slug).Render(templ.WithChildren(ctx, templ_7745c5c3_Var25), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -486,9 +719,9 @@ func page(title string) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var19 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var19 == nil {
-			templ_7745c5c3_Var19 = templ.NopComponent
+		templ_7745c5c3_Var26 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var26 == nil {
+			templ_7745c5c3_Var26 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"fr\">")
@@ -511,7 +744,7 @@ func page(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ_7745c5c3_Var19.Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = templ_7745c5c3_Var26.Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -547,25 +780,25 @@ func head(title string) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var20 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var20 == nil {
-			templ_7745c5c3_Var20 = templ.NopComponent
+		templ_7745c5c3_Var27 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var27 == nil {
+			templ_7745c5c3_Var27 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\"><title>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var21 string
-		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		var templ_7745c5c3_Var28 string
+		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/home.templ`, Line: 274, Col: 16}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/home.templ`, Line: 494, Col: 16}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><link rel=\"stylesheet\" href=\"static/css/style.css\"><link rel=\"icon\" href=\"static/img/favicon.ico\" type=\"image/x-icon\"></head>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><link rel=\"stylesheet\" href=\"/static/css/style.css\"><link rel=\"icon\" href=\"/static/img/favicon.ico\" type=\"image/x-icon\"></head>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -589,9 +822,9 @@ func navbar() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var22 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var22 == nil {
-			templ_7745c5c3_Var22 = templ.NopComponent
+		templ_7745c5c3_Var29 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var29 == nil {
+			templ_7745c5c3_Var29 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"bg-white shadow-sm\"><div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\"><div class=\"flex justify-between h-16\"><div class=\"flex items-center\"><a href=\"/\" class=\"font-bold text-xl text-gray-800 hover:text-gray-600 transition\">Grégoire Meylan - Ingénieur des Médias</a></div><div class=\"flex items-center space-x-4\"><a href=\"/blog\" class=\"text-gray-600 hover:text-gray-800 transition\">Blog</a> <a href=\"/portfolio\" class=\"text-gray-600 hover:text-gray-800 transition\">Portfolio</a> <a href=\"/technologies\" class=\"text-gray-600 hover:text-gray-800 transition\">Technologies</a> <a href=\"/about\" class=\"text-gray-600 hover:text-gray-800 transition\">À propos</a></div></div></div></nav>")
@@ -618,9 +851,9 @@ func footer() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var23 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var23 == nil {
-			templ_7745c5c3_Var23 = templ.NopComponent
+		templ_7745c5c3_Var30 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var30 == nil {
+			templ_7745c5c3_Var30 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer class=\"bg-white mt-16\"><div class=\"max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8\"><div class=\"flex justify-center space-x-6\"><a href=\"https://github.com/yourusername\" class=\"text-gray-400 hover:text-gray-500\"><span class=\"sr-only\">GitHub</span> <svg class=\"h-6 w-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path fill-rule=\"evenodd\" d=\"M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z\" clip-rule=\"evenodd\"></path></svg></a> <a href=\"https://twitter.com/yourusername\" class=\"text-gray-400 hover:text-gray-500\"><span class=\"sr-only\">Twitter</span> <svg class=\"h-6 w-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84\"></path></svg></a> <a href=\"https://linkedin.com/in/yourusername\" class=\"text-gray-400 hover:text-gray-500\"><span class=\"sr-only\">LinkedIn</span> <svg class=\"h-6 w-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path fill-rule=\"evenodd\" d=\"M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z\" clip-rule=\"evenodd\"></path></svg></a></div><div class=\"mt-8 text-center text-gray-400\"><p>&copy; 2024 Mon Site Personnel. Tous droits réservés.</p></div></div></footer>")

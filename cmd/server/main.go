@@ -34,6 +34,14 @@ func main() {
 		h.About(w, r)
 	})
 
+	router.HandleFunc("GET /blog", func(w http.ResponseWriter, r *http.Request) {
+		h.Blog(w, r)
+	})
+
+	router.HandleFunc("GET /blog/{slug}", func(w http.ResponseWriter, r *http.Request) {
+		h.BlogPost(w, r)
+	})
+
 	router.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
 	srv := http.Server{
