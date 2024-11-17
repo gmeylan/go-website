@@ -30,6 +30,10 @@ func main() {
 		h.Home(w, r)
 	})
 
+	router.HandleFunc("GET /about", func(w http.ResponseWriter, r *http.Request) {
+		h.About(w, r)
+	})
+
 	router.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
 	srv := http.Server{

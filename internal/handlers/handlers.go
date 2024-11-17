@@ -18,3 +18,7 @@ func NewHandlers(db *sql.DB) *Handlers {
 func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
 	components.Home().Render(r.Context(), w)
 }
+
+func (h *Handlers) About(w http.ResponseWriter, r *http.Request) {
+	components.About().Render(r.Context(), w)
+}
