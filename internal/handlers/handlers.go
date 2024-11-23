@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gmeylan/go-website/internal/components"
+	"github.com/gmeylan/go-website/internal/components/about"
 )
 
 type Handlers struct {
@@ -20,7 +21,7 @@ func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handlers) About(w http.ResponseWriter, r *http.Request) {
-	components.About().Render(r.Context(), w)
+	about.About().Render(r.Context(), w)
 }
 
 func (h *Handlers) Blog(w http.ResponseWriter, r *http.Request) {
