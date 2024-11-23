@@ -50,17 +50,62 @@ func About() templ.Component {
 			templ_7745c5c3_Err = renderExperience(
 				"Software Engineer",
 				"EPFL",
-				"2020 - Présent",
+				"jan 2021 - Présent",
 				"Développement et optimisation de solutions web pour la gestion des candidatures doctorales et des ressources informatiques.",
 			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = renderExperience(
+				"Ingénieur devOps",
+				"tiko Energy Solutions - Zurich",
+				"mai 2019 - dec 2020",
+				"Conception et implémentation de solutions pour l'aide aux équipes operationnelles pour une solutions d'aide dans la gestion d'énergie intelligente.",
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderExperience(
 				"Développeur Full Stack",
-				"tiko Energy Solutions",
-				"2018 - 2020",
-				"Conception et implémentation de solutions pour la gestion d'énergie intelligente.",
+				"Propulse Lab - Lausanne",
+				"jui 2018 - avr 2019",
+				"Conception et implémentation de solutions pour le domaine du marketing digital direct.",
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderExperience(
+				"Développeur Python",
+				"Open net - Lausanne",
+				"sep 2017 - jui 2018",
+				"Conception et implémentation de solutions dans le framework ERP Odoo.",
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderExperience(
+				"Développeur Symfony",
+				"TEAM PARTNERS - Genève",
+				"avr 2017 - jui 2017",
+				"Conception et implémentation de solutions dans le framework Symfony.",
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderExperience(
+				"Développeur Symfony",
+				"Antistatique - Lausanne",
+				"jav 2017 - amr 2017",
+				"Conception et implémentation de solutions dans le framework Symfony.",
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = renderExperience(
+				"Développeur Fullstack",
+				"DevFactory - Lausanne",
+				"sep 2016 - dec 2016",
+				"Conception et implémentation de solutions dans le framework Symfony.",
 			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -107,7 +152,7 @@ func renderExperience(title string, company string, period string, description s
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 128, Col: 58}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 158, Col: 58}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -120,7 +165,7 @@ func renderExperience(title string, company string, period string, description s
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(period)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 129, Col: 47}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 159, Col: 47}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -133,7 +178,7 @@ func renderExperience(title string, company string, period string, description s
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(company)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 131, Col: 63}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 161, Col: 63}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -146,7 +191,7 @@ func renderExperience(title string, company string, period string, description s
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 132, Col: 40}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 162, Col: 40}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
