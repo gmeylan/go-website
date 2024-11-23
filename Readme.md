@@ -21,7 +21,7 @@
 - [ ] Create the contact me logic 
   - [ ] DB 
   - [ ] Login 
-  - [ ] ... s
+  - [ ] ... 
 
 ### Completed Column ✓
 - [x] Refacto About page  
