@@ -13,8 +13,11 @@
   - [ ] Tag list
 
 - [ ] Create Portfolio page  
+  - [ ] Base (handlers, route, basic template) 
+
 
 - [ ] Create Technologies page  
+  - [ ] Base (handlers, route, basic template) 
 
 - [ ] Refacto Home page  
 

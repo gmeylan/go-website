@@ -34,6 +34,14 @@ func main() {
 		h.About(w, r)
 	})
 
+	router.HandleFunc("GET /portfolio", func(w http.ResponseWriter, r *http.Request) {
+		h.Portfolio(w, r)
+	})
+
+	router.HandleFunc("GET /technologies", func(w http.ResponseWriter, r *http.Request) {
+		h.Technologies(w, r)
+	})
+
 	router.HandleFunc("GET /blog", func(w http.ResponseWriter, r *http.Request) {
 		h.Blog(w, r)
 	})
