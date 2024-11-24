@@ -12,12 +12,12 @@
   - [ ] Create Write an article
   - [ ] Tag list
 
-- [ ] Create Portfolio page  
-  - [ ] Base (handlers, route, basic template) 
+- [x] Create Portfolio page  
+  - [x] Base (handlers, route, basic template) 
 
 
-- [ ] Create Technologies page  
-  - [ ] Base (handlers, route, basic template) 
+- [x] Create Technologies page  
+  - [x] Base (handlers, route, basic template) 
 
 - [ ] Refacto Home page  
 

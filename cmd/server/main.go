@@ -57,7 +57,6 @@ func main() {
 		Handler: router,
 	}
 
-	logger.Info("Server listening on :8080")
-
 	srv.ListenAndServe()
+
 }
