@@ -33,7 +33,7 @@ func (h *Handlers) Blog(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handlers) BlogPost(w http.ResponseWriter, r *http.Request) {
 	slug := r.PathValue("slug")
-	components.BlogPost(slug).Render(r.Context(), w)
+	blog.BlogPost(slug).Render(r.Context(), w)
 }
 
 func (h *Handlers) Portfolio(w http.ResponseWriter, r *http.Request) {
