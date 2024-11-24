@@ -9,6 +9,7 @@ import (
 	"github.com/gmeylan/go-website/internal/components/blog"
 	"github.com/gmeylan/go-website/internal/components/portfolio"
 	"github.com/gmeylan/go-website/internal/components/technologies"
+	"github.com/gmeylan/go-website/internal/data"
 )
 
 type Handlers struct {
@@ -24,7 +25,9 @@ func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handlers) About(w http.ResponseWriter, r *http.Request) {
-	about.About().Render(r.Context(), w)
+	experiences := data.GetExperiences()
+	component := about.About(experiences)
+	component.Render(r.Context(), w)
 }
 
 func (h *Handlers) Blog(w http.ResponseWriter, r *http.Request) {

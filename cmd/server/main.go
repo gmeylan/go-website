@@ -52,10 +52,12 @@ func main() {
 
 	router.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
-	srv := http.Server{
+	srv := &http.Server{
 		Addr:    ":8080",
 		Handler: router,
 	}
+
+	logger.Info("Server started on :8080")
 
 	srv.ListenAndServe()
 

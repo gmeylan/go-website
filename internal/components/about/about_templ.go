@@ -9,8 +9,9 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import "github.com/gmeylan/go-website/internal/components/layout"
+import "github.com/gmeylan/go-website/internal/types"
 
-func About() templ.Component {
+func About(experiences []types.Experience) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -43,74 +44,15 @@ func About() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"min-h-screen bg-gray-50\"><main class=\"max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8\"><div class=\"space-y-16\"><section class=\"relative\"><div class=\"text-center\"><h1 class=\"text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl\">À propos de moi</h1><div class=\"mt-12 flex justify-center\"><div class=\"relative w-40 h-40 rounded-full overflow-hidden\"><img src=\"static/img/greg.jpg\" alt=\"Profile\" class=\"object-cover w-full h-full\"></div></div><div class=\"mt-8 max-w-3xl mx-auto\"><p class=\"text-xl text-gray-500 leading-8\">Développeur passionné avec plus de 7 ans d'expérience dans le développement web et DevOps à l'EPFL</p></div></div></section><section class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><h2 class=\"text-3xl font-bold text-gray-900 mb-8\">Mon Parcours</h2><div class=\"prose prose-indigo max-w-none\"><p class=\"text-gray-600 leading-relaxed mb-6\">Développeur passionné avec plus de 7 ans d'expérience dans le développement web et DevOps,  je m'épanouis dans la création de solutions technologiques innovantes qui apportent une  réelle valeur ajoutée aux organisations. Actuellement Software Engineer à l'EPFL, je combine  expertise technique et vision stratégique pour transformer des défis complexes en opportunités.</p><p class=\"text-gray-600 leading-relaxed mb-6\">Mon parcours diversifié m'a permis de maîtriser un large éventail de technologies modernes,  allant du développement fullstack aux pratiques DevOps avancées. À l'EPFL, j'ai notamment  contribué à optimiser la gestion des candidatures doctorales et développé un système innovant  de réservation pour les ressources informatiques.</p></div></div></section><section class=\"grid gap-8 md:grid-cols-2\"><div class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><h3 class=\"text-2xl font-bold text-gray-900 mb-6\">Ce qui me distingue</h3><p class=\"text-gray-600 leading-relaxed\">Ce qui me distingue est ma capacité à aller au-delà du simple code. Je m'investis dans  l'amélioration continue des processus, l'automatisation intelligente des tâches et  l'implémentation des meilleures pratiques DevOps. Que ce soit dans la conception  d'architectures micro-services ou dans le déploiement d'infrastructures cloud, je cherche  toujours à créer des solutions durables et évolutives.</p></div></div><div class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><h3 class=\"text-2xl font-bold text-gray-900 mb-6\">Formation et Expérience</h3><p class=\"text-gray-600 leading-relaxed\">Ma formation d'ingénieur en médias, couplée à mon expérience variée dans des entreprises  comme tiko Energy Solutions et l'EPFL, m'a doté d'une approche holistique du développement  logiciel. Je suis particulièrement à l'aise dans la communication avec les parties prenantes  et l'analyse des besoins métier, permettant ainsi de livrer des solutions parfaitement  alignées avec les objectifs stratégiques.</p></div></div></section><section class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><h2 class=\"text-3xl font-bold text-gray-900 mb-8\">Expérience Professionnelle</h2><div class=\"space-y-8\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"min-h-screen bg-gray-50\"><main class=\"max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8\"><div class=\"space-y-16\"><section class=\"relative\"><div class=\"text-center\"><h1 class=\"text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl\">À propos de moi</h1><div class=\"mt-12 flex justify-center\"><div class=\"relative w-40 h-40 rounded-full overflow-hidden\"><img src=\"static/img/greg.jpg\" alt=\"Profile\" class=\"object-cover w-full h-full\"></div></div><div class=\"mt-8 max-w-3xl mx-auto\"><p class=\"text-xl text-gray-500 leading-8\">Développeur passionné avec plus de 7 ans d'expérience dans le développement web et DevOps à l'EPFL</p></div></div></section><section class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><h2 class=\"text-3xl font-bold text-gray-900 mb-8\">Mon Parcours</h2><div class=\"prose prose-indigo max-w-none\"><p class=\"text-gray-600 leading-relaxed mb-6\">Développeur passionné avec plus de 7 ans d'expérience dans le développement web et DevOps,  je m'épanouis dans la création de solutions technologiques innovantes qui apportent une  réelle valeur ajoutée aux organisations. Actuellement Software Engineer à l'EPFL, je combine  expertise technique et vision stratégique pour transformer des défis complexes en opportunités.</p><p class=\"text-gray-600 leading-relaxed mb-6\">Mon parcours diversifié m'a permis de maîtriser un large éventail de technologies modernes,  allant du développement fullstack aux pratiques DevOps avancées. À l'EPFL, j'ai notamment  contribué à optimiser la gestion des candidatures doctorales et développé un système innovant  de réservation pour les ressources informatiques.</p></div></div></section><section class=\"grid gap-8 md:grid-cols-2\"><div class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><h3 class=\"text-2xl font-bold text-gray-900 mb-6\">Ce qui me distingue</h3><p class=\"text-gray-600 leading-relaxed\">Ce qui me distingue est ma capacité à aller au-delà du simple code. Je m'investis dans  l'amélioration continue des processus, l'automatisation intelligente des tâches et  l'implémentation des meilleures pratiques DevOps. Que ce soit dans la conception  d'architectures micro-services ou dans le déploiement d'infrastructures cloud, je cherche  toujours à créer des solutions durables et évolutives.</p></div></div><div class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><h3 class=\"text-2xl font-bold text-gray-900 mb-6\">Formation et Expérience</h3><p class=\"text-gray-600 leading-relaxed\">Ma formation d'ingénieur en médias, couplée à mon expérience variée dans des entreprises  comme tiko Energy Solutions et l'EPFL, m'a doté d'une approche holistique du développement  logiciel. Je suis particulièrement à l'aise dans la communication avec les parties prenantes  et l'analyse des besoins métier, permettant ainsi de livrer des solutions parfaitement  alignées avec les objectifs stratégiques.</p></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = renderExperience(
-				"Software Engineer",
-				"EPFL",
-				"jan 2021 - Présent",
-				"Développement et optimisation de solutions web pour la gestion des candidatures doctorales et des ressources informatiques.",
-			).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = experienceSection(experiences).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = renderExperience(
-				"Ingénieur devOps",
-				"tiko Energy Solutions - Zurich",
-				"mai 2019 - dec 2020",
-				"Conception et implémentation de solutions pour l'aide aux équipes operationnelles pour une solutions d'aide dans la gestion d'énergie intelligente.",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = renderExperience(
-				"Développeur Full Stack",
-				"Propulse Lab - Lausanne",
-				"jui 2018 - avr 2019",
-				"Conception et implémentation de solutions pour le domaine du marketing digital direct.",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = renderExperience(
-				"Développeur Python",
-				"Open net - Lausanne",
-				"sep 2017 - jui 2018",
-				"Conception et implémentation de solutions dans le framework ERP Odoo.",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = renderExperience(
-				"Développeur Symfony",
-				"TEAM PARTNERS - Genève",
-				"avr 2017 - jui 2017",
-				"Conception et implémentation de solutions dans le framework Symfony.",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = renderExperience(
-				"Développeur Symfony",
-				"Antistatique - Lausanne",
-				"jav 2017 - amr 2017",
-				"Conception et implémentation de solutions dans le framework Symfony.",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = renderExperience(
-				"Développeur Fullstack",
-				"DevFactory - Lausanne",
-				"sep 2016 - dec 2016",
-				"Conception et implémentation de solutions dans le framework Symfony.",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></section><section class=\"bg-indigo-700 shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><div class=\"text-center\"><h2 class=\"text-3xl font-bold text-white mb-6\">Intéressé par une collaboration ?</h2><p class=\"text-indigo-100 mb-8\">N'hésitez pas à me contacter pour discuter de vos projets ou opportunités.</p><div class=\"flex justify-center space-x-4\"><a href=\"mailto:contact@example.com\" class=\"inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-indigo-50\">Me contacter</a> <a href=\"/portfolio\" class=\"inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700\">Voir mes projets</a></div></div></div></section></div></main></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"bg-indigo-700 shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><div class=\"text-center\"><h2 class=\"text-3xl font-bold text-white mb-6\">Intéressé par une collaboration ?</h2><p class=\"text-indigo-100 mb-8\">N'hésitez pas à me contacter pour discuter de vos projets ou opportunités.</p><div class=\"flex justify-center space-x-4\"><a href=\"mailto:contact@example.com\" class=\"inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-indigo-50\">Me contacter</a> <a href=\"/portfolio\" class=\"inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700\">Voir mes projets</a></div></div></div></section></div></main></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -124,7 +66,7 @@ func About() templ.Component {
 	})
 }
 
-func renderExperience(title string, company string, period string, description string) templ.Component {
+func renderExperience(exp types.Experience) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -150,9 +92,9 @@ func renderExperience(title string, company string, period string, description s
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(exp.Title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 158, Col: 58}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 111, Col: 62}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -163,9 +105,9 @@ func renderExperience(title string, company string, period string, description s
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(period)
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(exp.Period)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 159, Col: 47}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 112, Col: 51}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -176,11 +118,24 @@ func renderExperience(title string, company string, period string, description s
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(company)
+		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(exp.Company)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 161, Col: 63}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 114, Col: 67}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" - ")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var7 string
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(exp.Location)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 114, Col: 85}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -188,16 +143,78 @@ func renderExperience(title string, company string, period string, description s
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		var templ_7745c5c3_Var8 string
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(exp.Description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 162, Col: 40}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 115, Col: 44}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><div class=\"mt-2 flex flex-wrap gap-2\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, tag := range exp.Tags {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"px-2 py-1 text-xs bg-indigo-100 text-indigo-600 rounded-md\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var9 string
+			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(tag)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/about/about.templ`, Line: 119, Col: 9}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func experienceSection(experiences []types.Experience) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var10 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var10 == nil {
+			templ_7745c5c3_Var10 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"bg-white shadow-lg rounded-2xl overflow-hidden\"><div class=\"px-6 py-10 sm:px-10\"><h2 class=\"text-3xl font-bold text-gray-900 mb-8\">Expérience Professionnelle</h2><div class=\"space-y-8\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, exp := range experiences {
+			templ_7745c5c3_Err = renderExperience(exp).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
