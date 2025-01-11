@@ -48,3 +48,14 @@ func GetExperiences() []types.Experience {
 		},
 	}
 }
+
+func GetSkills() []types.Skill {
+	return []types.Skill{}
+}
+
+func GetResumeData() types.ResumeData {
+	return types.ResumeData{
+		Experiences: GetExperiences(),
+		Skills:      GetSkills(),
+	}
+}
