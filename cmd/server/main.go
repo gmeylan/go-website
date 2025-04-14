@@ -24,7 +24,7 @@ func main() {
 
 	router := http.NewServeMux()
 
-	h := handlers.NewHandlers(db)
+	h := handlers.NewHandlers(db, logger)
 
 	router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 		h.Home(w, r)

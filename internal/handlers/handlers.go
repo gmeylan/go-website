@@ -2,6 +2,8 @@ package handlers
 
 import (
 	"database/sql"
+	"fmt"
+	"log/slog"
 	"net/http"
 
 	"github.com/gmeylan/go-website/internal/components"
@@ -10,14 +12,19 @@ import (
 	"github.com/gmeylan/go-website/internal/components/portfolio"
 	"github.com/gmeylan/go-website/internal/components/technologies"
 	"github.com/gmeylan/go-website/internal/data"
+	"github.com/gmeylan/go-website/internal/markdown"
 )
 
 type Handlers struct {
-	db *sql.DB
+	db     *sql.DB
+	Logger *slog.Logger
 }
 
-func NewHandlers(db *sql.DB) *Handlers {
-	return &Handlers{db: db}
+func NewHandlers(db *sql.DB, logger *slog.Logger) *Handlers {
+	return &Handlers{
+		db:     db,
+		Logger: logger,
+	}
 }
 
 func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +43,14 @@ func (h *Handlers) Blog(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handlers) BlogPost(w http.ResponseWriter, r *http.Request) {
 	slug := r.PathValue("slug")
-	blog.BlogPost(slug).Render(r.Context(), w)
+	post, err := markdown.ParseMarkdownFile(fmt.Sprintf("content/blog/posts/%s.md", slug))
+	h.Logger.Info(fmt.Sprintf("content/blog/posts/%s.md", slug))
+
+	if err != nil {
+		h.Logger.Error(err.Error())
+	}
+
+	blog.BlogPost(post, slug).Render(r.Context(), w)
 }
 
 func (h *Handlers) Portfolio(w http.ResponseWriter, r *http.Request) {
