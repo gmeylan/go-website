@@ -40,8 +40,9 @@ func (h *Handlers) BlogPost(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handlers) Portfolio(w http.ResponseWriter, r *http.Request) {
-
-	portfolio.Portfolio().Render(r.Context(), w)
+	projects := data.GetProjects()
+	component := portfolio.Portfolio(projects)
+	component.Render(r.Context(), w)
 }
 
 func (h *Handlers) Technologies(w http.ResponseWriter, r *http.Request) {

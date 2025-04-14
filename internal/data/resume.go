@@ -42,7 +42,7 @@ func GetExperiences() []types.Experience {
 			Title:       "Développeur Full Stack",
 			Company:     "Divers entreprises",
 			Location:    "Lausanne",
-			Period:      "Septembre 2016 - Juin 2016",
+			Period:      "Septembre 2016 - Juillet 2017",
 			Description: "Conception et implémentation de solutions dans des frameworks PHP.",
 			Tags:        []string{"PHP", "Symfony", "Laravel", "JS/TS"},
 		},

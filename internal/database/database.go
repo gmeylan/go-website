@@ -12,15 +12,17 @@ func NewSQLiteDB(dbPath string) (*sql.DB, error) {
 		return nil, err
 	}
 
-	// _, err = db.Exec(`
-	// CREATE TABLE IF NOT EXISTS items (
-	// 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	// 	name TEXT NOT NULL
-	// )
-	// `)
-	// if err != nil {
-	// 	return nil, err
-	// }
+	_, err = db.Exec(`
+	CREATE TABLE IF NOT EXISTS contacts (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		email TEXT NOT NULL,
+		message TEXT NOT NULL,
+		name TEXT NOT NULL
+	)
+	`)
+	if err != nil {
+		return nil, err
+	}
 
 	return db, nil
 }

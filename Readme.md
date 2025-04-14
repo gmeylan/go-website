@@ -17,6 +17,11 @@
   - [ ] Login 
   - [ ] ... 
 
+- [] Do the Portfolio page
+  - [] Create the data model
+  - [] Get all the data
+  - [] Template
+
 ### Completed Column ✓
 - [x] Refacto About page  
   - [x] Add companies
