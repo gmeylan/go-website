@@ -2,7 +2,10 @@ package markdown
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
+	"path/filepath"
+	"sort"
 	"strings"
 	"time"
 
@@ -12,11 +15,15 @@ import (
 	"github.com/gomarkdown/markdown/parser"
 )
 
+type TagInfo struct {
+	Posts []types.BlogPost
+	Count int
+	Name  string
+}
+
 func ParseBlogPost(filePath string) (types.BlogPost, error) {
 	content, err := os.ReadFile(filePath)
 	metadata, mainContent, err := extractFrontMatter(content)
-	fmt.Println("Metadata:", metadata)
-	fmt.Println("mainContent:", mainContent)
 
 	if err != nil {
 		return types.BlogPost{}, fmt.Errorf("error while reading file: %w", err)
@@ -36,13 +43,12 @@ func ParseBlogPost(filePath string) (types.BlogPost, error) {
 	}
 
 	if date, ok := metadata["published-on"]; ok {
-		// Essayer plusieurs formats de date
 		formats := []string{
 			"2 January 2006",
 			"January 2, 2006",
 			"2006-01-02",
 			"02/01/2006",
-			"01/02/2006", // Format US
+			"01/02/2006",
 			"2006/01/02",
 		}
 
@@ -62,6 +68,10 @@ func ParseBlogPost(filePath string) (types.BlogPost, error) {
 		}
 	} else {
 		post.Date = time.Now()
+	}
+
+	if tags, ok := metadata["tags"]; ok {
+		post.Tags = strings.Split(tags, ",")
 	}
 
 	return post, nil
@@ -90,14 +100,14 @@ func extractFrontMatter(content []byte) (map[string]string, []byte, error) {
 
 	endPos := strings.Index(text[4:], "---\n")
 	if endPos == -1 {
-		return make(map[string]string), content, fmt.Errorf("délimiteur de fin de frontmatter non trouvé")
+		return make(map[string]string), content, fmt.Errorf("no end to frontmatter found")
 	}
 
 	endPos += 4
 
 	frontMatter := text[4:endPos]
 
-	mainContent := text[endPos+4:] // +4 pour sauter le délimiteur de fin
+	mainContent := text[endPos+4:]
 
 	metadata := parseFrontMatter(frontMatter)
 
@@ -127,4 +137,81 @@ func parseFrontMatter(frontMatter string) map[string]string {
 	}
 
 	return metadata
+}
+
+func GetAllBlogPosts(postsDir string, logger *slog.Logger) ([]types.BlogPost, error) {
+	logger.Info(postsDir)
+
+	var posts []types.BlogPost
+
+	workDir, err := os.Getwd()
+	if err != nil {
+		return nil, fmt.Errorf("erreur lors de la récupération du répertoire de travail: %w", err)
+	}
+
+	fullPath := filepath.Join(workDir, postsDir)
+
+	err = filepath.Walk(fullPath, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			logger.Error("erreur lors de la navigation dans le répertoire", "error", err, "path", path)
+			return err
+		}
+
+		// Ne traiter que les fichiers .md
+		if !info.IsDir() && strings.HasSuffix(info.Name(), ".md") {
+			logger.Info("Traitement du fichier markdown", "file", path)
+			post, err := ParseBlogPost(path)
+			if err != nil {
+				logger.Error("erreur lors du parsing du fichier", "error", err, "file", path)
+				return err
+			}
+			posts = append(posts, post)
+		}
+
+		return nil
+	})
+
+	return posts, nil
+}
+
+func GetAllTags(posts []types.BlogPost) []TagInfo {
+	// Map pour garder une trace des tags et de leur nombre
+	tagMap := make(map[string]*TagInfo)
+
+	// Parcourir tous les articles
+	for _, post := range posts {
+		for _, tag := range post.Tags {
+			// Nettoyer le tag (enlever les espaces, etc.)
+			cleanTag := strings.TrimSpace(tag)
+			if cleanTag == "" {
+				continue
+			}
+
+			// Si le tag n'existe pas encore, l'initialiser
+			if _, exists := tagMap[cleanTag]; !exists {
+				tagMap[cleanTag] = &TagInfo{
+					Name:  cleanTag,
+					Count: 0,
+					Posts: []types.BlogPost{},
+				}
+			}
+
+			// Incrémenter le compteur et ajouter l'article
+			tagMap[cleanTag].Count++
+			tagMap[cleanTag].Posts = append(tagMap[cleanTag].Posts, post)
+		}
+	}
+
+	// Convertir la map en slice
+	var tags []TagInfo
+	for _, tagInfo := range tagMap {
+		tags = append(tags, *tagInfo)
+	}
+
+	// Trier les tags par nom
+	sort.Slice(tags, func(i, j int) bool {
+		return tags[i].Name < tags[j].Name
+	})
+
+	return tags
 }

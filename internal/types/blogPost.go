@@ -11,4 +11,5 @@ type BlogPost struct {
 	Slug        string
 	Raw         map[string]string
 	Author      string
+	Tags        []string
 }

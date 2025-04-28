@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
+	"strconv"
 
 	"github.com/gmeylan/go-website/internal/components"
 	"github.com/gmeylan/go-website/internal/components/about"
@@ -38,6 +39,18 @@ func (h *Handlers) About(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handlers) Blog(w http.ResponseWriter, r *http.Request) {
+	posts, err := markdown.GetAllBlogPosts("content/blog/posts/", h.Logger)
+	if err != nil {
+		h.Logger.Error(err.Error())
+	}
+
+	tags := markdown.GetAllTags(posts)
+
+	for _, tag := range tags {
+		h.Logger.Info(tag.Name)
+		h.Logger.Info(strconv.Itoa(tag.Count))
+	}
+
 	blog.Blog().Render(r.Context(), w)
 }
 

@@ -10,6 +10,7 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import "github.com/gmeylan/go-website/internal/components/layout"
 import "github.com/gmeylan/go-website/internal/types"
+import "strings"
 
 func BlogPost(post types.BlogPost) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -51,7 +52,7 @@ func BlogPost(post types.BlogPost) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(post.Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog_post.templ`, Line: 9, Col: 64}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog_post.templ`, Line: 11, Col: 64}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -64,7 +65,7 @@ func BlogPost(post types.BlogPost) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(post.Date.Format("01/02/2006"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog_post.templ`, Line: 9, Col: 116}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog_post.templ`, Line: 11, Col: 116}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -77,13 +78,26 @@ func BlogPost(post types.BlogPost) templ.Component {
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(post.Author)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog_post.templ`, Line: 9, Col: 136}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog_post.templ`, Line: 11, Col: 136}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div><div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var6 string
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(strings.Join(post.Tags, " "))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog_post.templ`, Line: 12, Col: 47}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -91,7 +105,7 @@ func BlogPost(post types.BlogPost) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -121,12 +135,12 @@ func renderRelatedPost() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var6 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var6 == nil {
-			templ_7745c5c3_Var6 = templ.NopComponent
+		templ_7745c5c3_Var7 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var7 == nil {
+			templ_7745c5c3_Var7 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<article class=\"bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"p-6\"><span class=\"px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-100 rounded-md\">Go</span><h3 class=\"mt-3 text-lg font-bold text-gray-900\"><a href=\"#\" class=\"hover:text-indigo-600\">Performance des applications Go</a></h3><p class=\"mt-2 text-sm text-gray-600\">Techniques et bonnes pratiques pour optimiser vos applications Go en production.</p><div class=\"mt-4 flex items-center justify-between text-sm\"><span class=\"text-gray-500\">10 Mars 2024</span> <span class=\"text-indigo-600 hover:text-indigo-500\">Lire l'article →</span></div></div></article>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<article class=\"bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"p-6\"><span class=\"px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-100 rounded-md\">Go</span><h3 class=\"mt-3 text-lg font-bold text-gray-900\"><a href=\"#\" class=\"hover:text-indigo-600\">Performance des applications Go</a></h3><p class=\"mt-2 text-sm text-gray-600\">Techniques et bonnes pratiques pour optimiser vos applications Go en production.</p><div class=\"mt-4 flex items-center justify-between text-sm\"><span class=\"text-gray-500\">10 Mars 2024</span> <span class=\"text-indigo-600 hover:text-indigo-500\">Lire l'article →</span></div></div></article>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
