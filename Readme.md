@@ -8,8 +8,8 @@
 ## TODO
 ### Database
 - [ ] Refacto Blog page  
-  - [ ] Create a MD parser
-  - [ ] Create Write an article
+  - [x] Create a MD parser
+  - [x] Create Read an article
   - [ ] Tag list
 
 - [ ] Create the contact me logic 

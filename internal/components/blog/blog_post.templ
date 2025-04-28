@@ -1,12 +1,13 @@
 package blog
 import "github.com/gmeylan/go-website/internal/components/layout"
+import "github.com/gmeylan/go-website/internal/types"
 
 
-templ BlogPost(post string, slug string) {
-	@layout.Page(slug) {
-        { slug }
-        <div class="prose markdown-content">
-            @templ.Raw(post)
+templ BlogPost(post types.BlogPost) {
+	@layout.Page(post.Title) {
+        <div class="prose markdown-content mt-2">
+            <div class="mb-4"><span class="text-xl">{ post.Title }</span> posté le { post.Date.Format("01/02/2006") } par { post.Author}</div>
+            @templ.Raw(post.Content)
         </div>
 	}
 }

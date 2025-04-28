@@ -43,14 +43,14 @@ func (h *Handlers) Blog(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handlers) BlogPost(w http.ResponseWriter, r *http.Request) {
 	slug := r.PathValue("slug")
-	post, err := markdown.ParseMarkdownFile(fmt.Sprintf("content/blog/posts/%s.md", slug))
+	post, err := markdown.ParseBlogPost(fmt.Sprintf("content/blog/posts/%s.md", slug))
 	h.Logger.Info(fmt.Sprintf("content/blog/posts/%s.md", slug))
 
 	if err != nil {
 		h.Logger.Error(err.Error())
 	}
 
-	blog.BlogPost(post, slug).Render(r.Context(), w)
+	blog.BlogPost(post).Render(r.Context(), w)
 }
 
 func (h *Handlers) Portfolio(w http.ResponseWriter, r *http.Request) {

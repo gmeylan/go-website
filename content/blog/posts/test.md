@@ -1,3 +1,11 @@
+---
+layout: post
+published-on: 1988-06-11
+title: Blogging Like a Boss
+author: Grégoire Meylan
+---
+
+
 # Hello world
 
 ## Testouille
