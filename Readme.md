@@ -11,6 +11,9 @@
   - [x] Create a MD parser
   - [x] Create Read an article
   - [ ] Tag list
+    - [ ] Refacto main layout of /blog
+      - [ ] Inside the page render the tags on the top with the information provided by GetAllTags
+      - [ ] Render the list of blog posts ordered by date asc or desc. Add the possibility to search by tags. HTMX fragment.
 
 - [ ] Create the contact me logic 
   - [ ] DB 
