@@ -153,16 +153,16 @@ func GetAllBlogPosts(postsDir string, logger *slog.Logger) ([]types.BlogPost, er
 
 	err = filepath.Walk(fullPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-			logger.Error("erreur lors de la navigation dans le répertoire", "error", err, "path", path)
+			logger.Error("Error navigating in the direction", "error", err, "path", path)
 			return err
 		}
 
 		// Ne traiter que les fichiers .md
 		if !info.IsDir() && strings.HasSuffix(info.Name(), ".md") {
-			logger.Info("Traitement du fichier markdown", "file", path)
+			logger.Info("Parsing Mardown file", "file", path)
 			post, err := ParseBlogPost(path)
 			if err != nil {
-				logger.Error("erreur lors du parsing du fichier", "error", err, "file", path)
+				logger.Error("Error while parsing file", "error", err, "file", path)
 				return err
 			}
 			posts = append(posts, post)

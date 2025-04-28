@@ -7,11 +7,16 @@ import "strings"
 
 templ BlogPost(post types.BlogPost) {
 	@layout.Page(post.Title) {
-        <div class="prose markdown-content mt-2">
-            <div class="mb-4"><span class="text-xl">{ post.Title }</span> posté le { post.Date.Format("01/02/2006") } par { post.Author}</div>
-            <div>{ strings.Join(post.Tags, " ") }</div>
-            @templ.Raw(post.Content)
-        </div>
+        if len(post.Content) == 0 {
+            # Todo Redirection vers la page d'accueil
+            <div>Pas de contenu</div>
+        } else {
+            <div class="prose markdown-content mt-2">
+                <div class="mb-4"><span class="text-xl">{ post.Title }</span> posté le { post.Date.Format("01/02/2006") } par { post.Author}</div>
+                <div>{ strings.Join(post.Tags, " ") }</div>
+                @templ.Raw(post.Content)
+            </div>
+        }
 	}
 }
 
