@@ -4,9 +4,10 @@ import "github.com/gmeylan/go-website/internal/components/layout"
 
 templ BlogPost(post string, slug string) {
 	@layout.Page(slug) {
-        { post }
         { slug }
-        @templ.Raw(post)
+        <div class="prose markdown-content">
+            @templ.Raw(post)
+        </div>
 	}
 }
 
