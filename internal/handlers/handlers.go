@@ -29,7 +29,13 @@ func NewHandlers(db *sql.DB, logger *slog.Logger) *Handlers {
 }
 
 func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
-	components.Home().Render(r.Context(), w)
+	posts, err := markdown.GetAllBlogPosts("content/blog/posts/", h.Logger)
+	if err != nil {
+		h.Logger.Error(err.Error())
+	}
+
+	component := components.Home(posts)
+	component.Render(r.Context(), w)
 }
 
 func (h *Handlers) About(w http.ResponseWriter, r *http.Request) {
