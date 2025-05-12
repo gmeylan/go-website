@@ -11,6 +11,7 @@ import templruntime "github.com/a-h/templ/runtime"
 import "github.com/gmeylan/go-website/internal/components/layout"
 import "github.com/gmeylan/go-website/internal/types"
 import "strconv"
+import "fmt"
 
 func Blog(post []types.BlogPost, tags []types.TagInfo) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -57,7 +58,7 @@ func Blog(post []types.BlogPost, tags []types.TagInfo) templ.Component {
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(tag.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog.templ`, Line: 30, Col: 20}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog.templ`, Line: 31, Col: 20}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -70,7 +71,7 @@ func Blog(post []types.BlogPost, tags []types.TagInfo) templ.Component {
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(strconv.Itoa(tag.Count))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog.templ`, Line: 30, Col: 71}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog.templ`, Line: 31, Col: 71}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -85,11 +86,11 @@ func Blog(post []types.BlogPost, tags []types.TagInfo) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = renderFeaturedPost().Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = renderFeaturedPost(post[0]).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = renderFeaturedPost().Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = renderFeaturedPost(post[1]).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -135,7 +136,7 @@ func Blog(post []types.BlogPost, tags []types.TagInfo) templ.Component {
 	})
 }
 
-func renderFeaturedPost() templ.Component {
+func renderFeaturedPost(post types.BlogPost) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -156,7 +157,52 @@ func renderFeaturedPost() templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<article class=\"bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"aspect-w-16 aspect-h-9\"><img src=\"https://placehold.co/800x400/png\" alt=\"Article image\" class=\"object-cover w-full h-full\"></div><div class=\"p-6\"><div class=\"flex gap-2 mb-4\"><span class=\"px-3 py-1 text-sm font-medium text-indigo-600 bg-indigo-100 rounded-md\">Go</span> <span class=\"px-3 py-1 text-sm font-medium text-indigo-600 bg-indigo-100 rounded-md\">Web</span></div><h3 class=\"text-xl font-bold text-gray-900 mb-2\"><a href=\"/blog/slug-de-ouf\" class=\"hover:text-indigo-600\">Introduction à HTMX avec Go</a></h3><p class=\"text-gray-600 mb-4\">Découvrez comment HTMX peut simplifier le développement web moderne avec Go et créer des applications interactives sans JavaScript complexe.</p><div class=\"flex items-center justify-between\"><div class=\"flex items-center\"><div class=\"ml-3\"><p class=\"text-sm font-medium text-gray-900\">John Doe</p><p class=\"text-sm text-gray-500\">15 Mars 2024</p></div></div></div></div></article>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<article class=\"bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"aspect-w-16 aspect-h-9\"><img src=\"https://placehold.co/800x400/png\" alt=\"Article image\" class=\"object-cover w-full h-full\"></div><div class=\"p-6\"><div class=\"flex gap-2 mb-4\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, tag := range post.Tags {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<span class=\"px-3 py-1 text-sm font-medium text-indigo-600 bg-indigo-100 rounded-md\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var6 string
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(tag)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog.templ`, Line: 69, Col: 95}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</div><h3 class=\"text-xl font-bold text-gray-900 mb-2\"><a href=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var7 templ.SafeURL = templ.SafeURL(fmt.Sprintf("/blog/%s", post.Slug))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var7)))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\" class=\"hover:text-indigo-600\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var8 string
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(post.Title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/components/blog/blog.templ`, Line: 74, Col: 106}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</a></h3><p class=\"text-gray-600 mb-4\">Découvrez comment HTMX peut simplifier le développement web moderne avec Go et créer des applications interactives sans JavaScript complexe.</p><div class=\"flex items-center justify-between\"><div class=\"flex items-center\"><div class=\"ml-3\"><p class=\"text-sm font-medium text-gray-900\">John Doe</p><p class=\"text-sm text-gray-500\">15 Mars 2024</p></div></div></div></div></article>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -180,12 +226,12 @@ func renderPostCard() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var6 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var6 == nil {
-			templ_7745c5c3_Var6 = templ.NopComponent
+		templ_7745c5c3_Var9 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var9 == nil {
+			templ_7745c5c3_Var9 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<article class=\"bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"aspect-w-16 aspect-h-9\"><img src=\"https://placehold.co/400x225/png\" alt=\"Article image\" class=\"object-cover w-full h-full\"></div><div class=\"p-6\"><div class=\"flex gap-2 mb-3\"><span class=\"px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-100 rounded-md\">Docker</span></div><h3 class=\"text-lg font-bold text-gray-900 mb-2\"><a href=\"#\" class=\"hover:text-indigo-600\">Optimiser ses builds Docker</a></h3><p class=\"text-gray-600 text-sm mb-4\">Apprenez les meilleures pratiques pour optimiser vos builds Docker et améliorer vos workflows de développement.</p><div class=\"flex items-center justify-between text-sm\"><div class=\"flex items-center\"><span class=\"ml-2 text-gray-700\">Jane Smith</span></div><span class=\"text-gray-500\">12 Mars 2024</span></div></div></article>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<article class=\"bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"aspect-w-16 aspect-h-9\"><img src=\"https://placehold.co/400x225/png\" alt=\"Article image\" class=\"object-cover w-full h-full\"></div><div class=\"p-6\"><div class=\"flex gap-2 mb-3\"><span class=\"px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-100 rounded-md\">Docker</span></div><h3 class=\"text-lg font-bold text-gray-900 mb-2\"><a href=\"#\" class=\"hover:text-indigo-600\">Optimiser ses builds Docker</a></h3><p class=\"text-gray-600 text-sm mb-4\">Apprenez les meilleures pratiques pour optimiser vos builds Docker et améliorer vos workflows de développement.</p><div class=\"flex items-center justify-between text-sm\"><div class=\"flex items-center\"><span class=\"ml-2 text-gray-700\">Jane Smith</span></div><span class=\"text-gray-500\">12 Mars 2024</span></div></div></article>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

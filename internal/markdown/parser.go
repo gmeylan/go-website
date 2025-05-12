@@ -36,6 +36,10 @@ func ParseBlogPost(filePath string) (types.BlogPost, error) {
 		post.Author = strings.TrimSpace(author)
 	}
 
+	if slug, ok := metadata["slug"]; ok {
+		post.Slug = strings.TrimSpace(slug)
+	}
+
 	if date, ok := metadata["published-on"]; ok {
 		formats := []string{
 			"2 January 2006",
