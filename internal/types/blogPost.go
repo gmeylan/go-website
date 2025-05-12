@@ -11,3 +11,9 @@ type BlogPost struct {
 	Author  string
 	Tags    []string
 }
+
+type TagInfo struct {
+	Posts []BlogPost
+	Count int
+	Name  string
+}

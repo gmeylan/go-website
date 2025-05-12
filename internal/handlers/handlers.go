@@ -51,7 +51,9 @@ func (h *Handlers) Blog(w http.ResponseWriter, r *http.Request) {
 		h.Logger.Info(strconv.Itoa(tag.Count))
 	}
 
-	blog.Blog().Render(r.Context(), w)
+	component := blog.Blog(posts, tags)
+
+	component.Render(r.Context(), w)
 }
 
 func (h *Handlers) BlogPost(w http.ResponseWriter, r *http.Request) {

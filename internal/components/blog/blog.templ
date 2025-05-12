@@ -1,8 +1,10 @@
 package blog
 
 import "github.com/gmeylan/go-website/internal/components/layout"
+import "github.com/gmeylan/go-website/internal/types"
+import "strconv"
 
-templ Blog() {
+templ Blog(post []types.BlogPost, tags []types.TagInfo) {
 	@layout.Page("Blog index") {
 		<div class="min-h-screen bg-gray-50">
 			<main class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -23,15 +25,11 @@ templ Blog() {
 								<button class="px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">
 									Tous les articles
 								</button>
-								<button class="px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">
-									DevOps
-								</button>
-								<button class="px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">
-									Go
-								</button>
-								<button class="px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">
-									Web
-								</button>
+								for _, tag := range tags {
+									<button class="px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">
+										{ tag.Name } <span class="text-xs"> { strconv.Itoa(tag.Count) }</span>
+									</button>
+								}
 							</div>
 						</div>
 					</section>

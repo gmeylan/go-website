@@ -15,12 +15,6 @@ import (
 	"github.com/gomarkdown/markdown/parser"
 )
 
-type TagInfo struct {
-	Posts []types.BlogPost
-	Count int
-	Name  string
-}
-
 func ParseBlogPost(filePath string) (types.BlogPost, error) {
 	content, err := os.ReadFile(filePath)
 	metadata, mainContent, err := extractFrontMatter(content)
@@ -173,8 +167,8 @@ func GetAllBlogPosts(postsDir string, logger *slog.Logger) ([]types.BlogPost, er
 	return posts, nil
 }
 
-func GetAllTags(posts []types.BlogPost) []TagInfo {
-	tagMap := make(map[string]*TagInfo)
+func GetAllTags(posts []types.BlogPost) []types.TagInfo {
+	tagMap := make(map[string]*types.TagInfo)
 
 	for _, post := range posts {
 		for _, tag := range post.Tags {
@@ -184,7 +178,7 @@ func GetAllTags(posts []types.BlogPost) []TagInfo {
 			}
 
 			if _, exists := tagMap[cleanTag]; !exists {
-				tagMap[cleanTag] = &TagInfo{
+				tagMap[cleanTag] = &types.TagInfo{
 					Name:  cleanTag,
 					Count: 0,
 					Posts: []types.BlogPost{},
@@ -196,7 +190,7 @@ func GetAllTags(posts []types.BlogPost) []TagInfo {
 		}
 	}
 
-	var tags []TagInfo
+	var tags []types.TagInfo
 	for _, tagInfo := range tagMap {
 		tags = append(tags, *tagInfo)
 	}
