@@ -157,7 +157,6 @@ func GetAllBlogPosts(postsDir string, logger *slog.Logger) ([]types.BlogPost, er
 			return err
 		}
 
-		// Ne traiter que les fichiers .md
 		if !info.IsDir() && strings.HasSuffix(info.Name(), ".md") {
 			logger.Info("Parsing Mardown file", "file", path)
 			post, err := ParseBlogPost(path)
@@ -175,19 +174,15 @@ func GetAllBlogPosts(postsDir string, logger *slog.Logger) ([]types.BlogPost, er
 }
 
 func GetAllTags(posts []types.BlogPost) []TagInfo {
-	// Map pour garder une trace des tags et de leur nombre
 	tagMap := make(map[string]*TagInfo)
 
-	// Parcourir tous les articles
 	for _, post := range posts {
 		for _, tag := range post.Tags {
-			// Nettoyer le tag (enlever les espaces, etc.)
 			cleanTag := strings.TrimSpace(tag)
 			if cleanTag == "" {
 				continue
 			}
 
-			// Si le tag n'existe pas encore, l'initialiser
 			if _, exists := tagMap[cleanTag]; !exists {
 				tagMap[cleanTag] = &TagInfo{
 					Name:  cleanTag,
@@ -196,19 +191,16 @@ func GetAllTags(posts []types.BlogPost) []TagInfo {
 				}
 			}
 
-			// Incrémenter le compteur et ajouter l'article
 			tagMap[cleanTag].Count++
 			tagMap[cleanTag].Posts = append(tagMap[cleanTag].Posts, post)
 		}
 	}
 
-	// Convertir la map en slice
 	var tags []TagInfo
 	for _, tagInfo := range tagMap {
 		tags = append(tags, *tagInfo)
 	}
 
-	// Trier les tags par nom
 	sort.Slice(tags, func(i, j int) bool {
 		return tags[i].Name < tags[j].Name
 	})

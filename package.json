@@ -4,6 +4,6 @@
     "tailwindcss": "^3.4.15"
   },
   "dependencies": {
-    "caniuse-lite": "^1.0.30001715"
+    "caniuse-lite": "^1.0.30001717"
   }
 }
