@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
-	"strconv"
 
 	"github.com/gmeylan/go-website/internal/components"
 	"github.com/gmeylan/go-website/internal/components/about"
@@ -51,11 +50,6 @@ func (h *Handlers) Blog(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tags := markdown.GetAllTags(posts)
-
-	for _, tag := range tags {
-		h.Logger.Info(tag.Name)
-		h.Logger.Info(strconv.Itoa(tag.Count))
-	}
 
 	component := blog.Blog(posts, tags)
 
