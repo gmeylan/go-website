@@ -1,5 +1,5 @@
 ---
-published-on: 1988-06-11
+published-on: 2025-01-05
 title: Blogging Like a Boss
 author: Grégoire Meylan
 tags: Go, devOps, kkk

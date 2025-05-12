@@ -5,7 +5,7 @@ import "github.com/gmeylan/go-website/internal/types"
 import "strconv"
 import "fmt"
 
-templ Blog(post []types.BlogPost, tags []types.TagInfo) {
+templ Blog(posts []types.BlogPost, tags []types.TagInfo) {
 	@layout.Page("Blog index") {
 		<div class="min-h-screen bg-gray-50">
 			<main class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -37,19 +37,16 @@ templ Blog(post []types.BlogPost, tags []types.TagInfo) {
 					<section class="space-y-8">
 						<h2 class="text-2xl font-bold text-gray-900">Articles récents</h2>
 						<div class="grid gap-8 md:grid-cols-2">
-							@renderFeaturedPost(post[0])
-							@renderFeaturedPost(post[1])
+							@renderFeaturedPost(posts[0])
+							@renderFeaturedPost(posts[1])
 						</div>
 					</section>
 					<section class="space-y-8">
 						<h2 class="text-2xl font-bold text-gray-900">Tous les articles</h2>
 						<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-							@renderPostCard()
-							@renderPostCard()
-							@renderPostCard()
-							@renderPostCard()
-							@renderPostCard()
-							@renderPostCard()
+							for _, post := range posts {
+								@renderPostCard(post)
+							}
 						</div>
 					</section>
 				</div>
@@ -78,9 +75,9 @@ templ renderFeaturedPost(post types.BlogPost) {
 			</p>
 			<div class="flex items-center justify-between">
 				<div class="flex items-center">
-					<div class="ml-3">
-						<p class="text-sm font-medium text-gray-900">John Doe</p>
-						<p class="text-sm text-gray-500">15 Mars 2024</p>
+					<div class="">
+						<p class="text-sm font-medium text-gray-900">{ post.Author }</p>
+						<p class="text-sm text-gray-500">{ post.Date.Format("01/02/2006") }</p>
 					</div>
 				</div>
 			</div>
@@ -88,28 +85,28 @@ templ renderFeaturedPost(post types.BlogPost) {
 	</article>
 }
 
-templ renderPostCard() {
+templ renderPostCard(post types.BlogPost) {
 	<article class="bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow">
 		<div class="aspect-w-16 aspect-h-9">
 			<img src="https://placehold.co/400x225/png" alt="Article image" class="object-cover w-full h-full"/>
 		</div>
 		<div class="p-6">
 			<div class="flex gap-2 mb-3">
-				<span class="px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-100 rounded-md">
-					Docker
-				</span>
+				for _, tag := range post.Tags {
+					<span class="px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-100 rounded-md">{ tag }</span>
+				}
 			</div>
 			<h3 class="text-lg font-bold text-gray-900 mb-2">
-				<a href="#" class="hover:text-indigo-600">Optimiser ses builds Docker</a>
+				<a href={templ.SafeURL(fmt.Sprintf("/blog/%s", post.Slug))} class="hover:text-indigo-600">{ post.Title }</a>
 			</h3>
 			<p class="text-gray-600 text-sm mb-4">
 				Apprenez les meilleures pratiques pour optimiser vos builds Docker et améliorer vos workflows de développement.
 			</p>
 			<div class="flex items-center justify-between text-sm">
 				<div class="flex items-center">
-					<span class="ml-2 text-gray-700">Jane Smith</span>
+					<span class="text-gray-700">{ post.Author }</span>
 				</div>
-				<span class="text-gray-500">12 Mars 2024</span>
+				<span class="text-gray-500">{ post.Date.Format("01/02/2006") }</span>
 			</div>
 		</div>
 	</article>
