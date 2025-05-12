@@ -28,7 +28,7 @@ func NewHandlers(db *sql.DB, logger *slog.Logger) *Handlers {
 }
 
 func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
-	posts, err := markdown.GetAllBlogPosts("content/blog/posts/", h.Logger)
+	posts, err := markdown.GetAllBlogPosts("content/blog/posts/", "", h.Logger)
 	if err != nil {
 		h.Logger.Error(err.Error())
 	}
@@ -44,7 +44,11 @@ func (h *Handlers) About(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handlers) Blog(w http.ResponseWriter, r *http.Request) {
-	posts, err := markdown.GetAllBlogPosts("content/blog/posts/", h.Logger)
+	h.Logger.Info(r.URL.Query().Get("tag"))
+
+	tag := r.URL.Query().Get("tag")
+
+	posts, err := markdown.GetAllBlogPosts("content/blog/posts/", tag, h.Logger)
 	if err != nil {
 		h.Logger.Error(err.Error())
 	}

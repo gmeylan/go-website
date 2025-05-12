@@ -69,7 +69,15 @@ func ParseBlogPost(filePath string) (types.BlogPost, error) {
 	}
 
 	if tags, ok := metadata["tags"]; ok {
-		post.Tags = strings.Split(tags, ",")
+		rawTags := strings.Split(tags, ",")
+		post.Tags = make([]string, 0, len(rawTags))
+
+		for _, tag := range rawTags {
+			trimmedTag := strings.TrimSpace(tag)
+			if trimmedTag != "" {
+				post.Tags = append(post.Tags, trimmedTag)
+			}
+		}
 	}
 
 	return post, nil
@@ -137,9 +145,7 @@ func parseFrontMatter(frontMatter string) map[string]string {
 	return metadata
 }
 
-func GetAllBlogPosts(postsDir string, logger *slog.Logger) ([]types.BlogPost, error) {
-	logger.Info(postsDir)
-
+func GetAllBlogPosts(postsDir string, tag string, logger *slog.Logger) ([]types.BlogPost, error) {
 	var posts []types.BlogPost
 
 	workDir, err := os.Getwd()
@@ -151,18 +157,19 @@ func GetAllBlogPosts(postsDir string, logger *slog.Logger) ([]types.BlogPost, er
 
 	err = filepath.Walk(fullPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-			logger.Error("Error navigating in the direction", "error", err, "path", path)
 			return err
 		}
 
 		if !info.IsDir() && strings.HasSuffix(info.Name(), ".md") {
-			logger.Info("Parsing Mardown file", "file", path)
 			post, err := ParseBlogPost(path)
 			if err != nil {
 				logger.Error("Error while parsing file", "error", err, "file", path)
 				return err
 			}
-			posts = append(posts, post)
+			if tag == "" || containsTag(post, tag) {
+				posts = append(posts, post)
+
+			}
 		}
 
 		return nil
@@ -204,4 +211,16 @@ func GetAllTags(posts []types.BlogPost) []types.TagInfo {
 	})
 
 	return tags
+}
+
+func containsTag(post types.BlogPost, tag string) bool {
+	searchTag := strings.TrimSpace(strings.ToLower(tag))
+
+	for _, t := range post.Tags {
+		postTag := strings.TrimSpace(strings.ToLower(t))
+		if postTag == searchTag {
+			return true
+		}
+	}
+	return false
 }

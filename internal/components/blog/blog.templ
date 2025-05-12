@@ -38,7 +38,6 @@ templ Blog(posts []types.BlogPost, tags []types.TagInfo) {
 						<h2 class="text-2xl font-bold text-gray-900">Articles récents</h2>
 						<div class="grid gap-8 md:grid-cols-2">
 							@renderFeaturedPost(posts[0])
-							@renderFeaturedPost(posts[1])
 						</div>
 					</section>
 					<section class="space-y-8">
